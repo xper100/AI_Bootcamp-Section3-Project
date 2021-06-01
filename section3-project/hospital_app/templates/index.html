@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+<h1 style="text-align: center">Search for Hospital</h1>
+{% endblock  %}
+
+{% block lead  %}
+<h2 style="text-align: center">"지역" + "진료과목"을 띄어쓰기 없이 넣어주세요.</h2>
+<form action='/' method='POST' style="text-align: center">
+    <input type='text' name = 'local-category', id='local-category'>
+    <input type='submit' value="Search">
+</form>
+{% endblock  %}
+
+{% block main_body  %}
+<h1>Hospital</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">지역</th>
+        <th scope="col">진료과목</th>
+        <th scope="col">병원이름</th>
+        <th>Delete or Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <a href="">Delete</a>
+            <br>
+            <a href="">Update</a>
+        </td>
+    </tbody>
+</table>
+{% endblock  %}
