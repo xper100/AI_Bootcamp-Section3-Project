@@ -2,41 +2,20 @@
 
 
 {% block title  %}
-<h1 style="text-align: center">Search for Hospital</h1>
+<h1 style="text-align: center">지역내 병원정보 검색하기</h1>
 {% endblock  %}
 
 {% block lead  %}
-<h2 style="text-align: center">"지역" + "진료과목"을 띄어쓰기 없이 넣어주세요.</h2>
-<form action='/' method='POST' style="text-align: center">
-    <input type='text' name = 'local-category', id='local-category'>
-    <input type='submit' value="Search">
-</form>
+<p style="text-align: center">환영합니다. 
+    <br>
+    <br>
+이곳에서 지역내 병원정보를 검색해서 본인에 맞는 병원을 찾으실 수 있도록 도와드리겠습니다.</p>
+
 {% endblock  %}
 
 {% block main_body  %}
-<h1>Hospital</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">지역</th>
-        <th scope="col">진료과목</th>
-        <th scope="col">병원이름</th>
-        <th>Delete or Update</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <a href="">Delete</a>
-            <br>
-            <a href="">Update</a>
-        </td>
-    </tbody>
-</table>
 {% endblock  %}
+
+ 
+

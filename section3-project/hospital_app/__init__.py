@@ -2,12 +2,15 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, Session
+from sqlalchemy.orm import Session
+from sqlalchemy.ext.declarative import declarative_base
+
 
 db = SQLAlchemy()
 migrate = Migrate()
 
-DATABASE_URI = "postgresql+psycopg2://postgres:Wndbs9526!@localhost:5432/hospital"
+
+DATABASE_URI = "postgresql://postgres:Wndbs9526!@localhost/hospital"
 
 engine = create_engine(DATABASE_URI)
 Base = declarative_base()
@@ -15,10 +18,12 @@ Base.metadata.create_all(bind=engine)
 
 session = Session(bind=engine)
 
+# "postgresql+psycopg2://postgres:postgres@localhost/hospital"
+
 def create_app(config=None):
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://postgres:Wndbs9526!@localhost:5432/hospital"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Wndbs9526!@localhost/hospital"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     if config is not None:

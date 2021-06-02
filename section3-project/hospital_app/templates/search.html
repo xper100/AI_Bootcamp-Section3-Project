@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+<h1 style="text-align: center">Search for Hospital</h1>
+
+지역이름(서울, 평택 등)과 진료과목(항문외과, 내과 등)을 띄어쓰기없이 입력해주세요.
+{% endblock  %}
+
+{% block lead  %}
+<form method="POST" action="/api/search">
+  <input name="searchword" style="margin-bottom:10px" class="form-control" type="text" placeholder="지역+진료과목을 띄어쓰기없이 입력해주세요">
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+
+{% endblock  %}
+
+{% block main_body  %}
+<h1>Hospital</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">시</th>
+        <th scope="col">동/구/읍</th>
+        <th scope="col">진료과목</th>
+        <th scope="col">병원이름</th>
+        <th scope="col">평균 평점</th>
+        <th>Delete or Update</th>
+        </tr>
+    </thead>
+    {% for hospital in hospital_list %}
+    <tbody>
+        <tr>
+        <th scope="row"></th>
+        <td>{{ hospital.state }}</td>
+        <td>{{ hospital.city }}</td>
+        <td>{{ hospital.category }}</td>
+        <td>{{ hospital.hospitalname }}</td>
+        <td>{{ hospital.avg_star }}</td>
+        <td>
+            <a href="/api/search/{{ hospital.id }}">Delete</a>
+            <br>
+            <!-- <a href="/api/search/{{ hospital.id }}">Update</a> -->
+            <br>
+            <a href="">Reviews</a>
+        </td>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock  %} 

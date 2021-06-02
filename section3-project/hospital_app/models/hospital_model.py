@@ -14,11 +14,38 @@ class Hospital(db.Model):
     contact_num = db.Column(db.VARCHAR(100))
     blog_address = db.Column(db.VARCHAR(200))
     
+    # reviews = db.relationship('Review', backref='hospital', cascade = "all,delete")
+    def __repr__(self):
+        return '<Hospital %r>' % self.hospitalname
+
+
+class Review(db.Model):
+    __tablename__ = 'review'
+
+    id = db.Column(db.Integer, primary_key = True)
+    hospital_id = db.Column(db.Integer, db.ForeignKey('hospital.id'), nullable = False)
+    review_star = db.Column(db.Float, nullable = False)
+    review_comment = db.Column(db.VARCHAR(500))
+    
+    
 
     # tweets = db.relationship('Tweet', backref = 'user', cascade = "all,delete")
     def __repr__(self):
-        return f"Hospital id: {self.id}, Hospitalname: {self.hospitalname}"
+        return '<User %r>' % self.hospital_id
 
+
+
+def delete_hospital(id):
+    hospital = Hospital.query.filter(Hospital.id == id).first()
+    db.session.delete(hospital)
+    db.session.commit()
+
+
+# def update_hospital(id):
+#     hospital = Hospital.query.filter(Hospital.id == id).\
+#         update()
+
+#     db.session.commit()
 
 # def add_hospital(raw_data):
 #     new_data = Hospital(
